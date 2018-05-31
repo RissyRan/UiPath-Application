@@ -1,0 +1,14 @@
+{
+  "name": "amazon_scraping_items",
+  "description": "Blank Project",
+  "main": "Main.xaml",
+  "dependencies": {},
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.1.4.0",
+  "projectVersion": "1.0.6725.20645",
+  "packOptions": {},
+  "runtimeOptions": {}
+}
