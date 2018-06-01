@@ -65,10 +65,11 @@
       <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="columns" />
       <Variable x:TypeArguments="x:String" Default="www.amazon.com" Name="website" />
       <Variable x:TypeArguments="sd:DataTable" Name="itemResult" />
+      <Variable x:TypeArguments="x:String" Default="C:\Users\ranran\Desktop\Ran\UiPath Practice\itemList.xlsx" Name="filePath" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
-        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="C:\Users\ranran\Desktop\Ran\UiPath Practice\itemList.xlsx">
+        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="[filePath]">
           <ui:ExcelApplicationScope.Body>
             <ActivityAction x:TypeArguments="ui:WorkbookApplication">
               <ActivityAction.Argument>
@@ -97,9 +98,8 @@
                           </ActivityAction.Argument>
                           <Sequence sap2010:WorkflowViewState.IdRef="Sequence_27">
                             <Sequence sap2010:WorkflowViewState.IdRef="Sequence_26">
-                              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Now starting to scrape &quot; + item]" TopMost="True" />
                               <Sequence DisplayName="Recording typing item" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Amazoncom Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="21a1892a62f11e2fc78bcdb00966a001" Selector="&lt;html app='chrome.exe' title='Amazon.com: Online Shopping for Electronics, Apparel, Computers,*' /&gt;" TimeoutMS="2000">
+                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Typing Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="21a1892a62f11e2fc78bcdb00966a001" Selector="&lt;html app='chrome.exe' title='Amazon.com: Online Shopping for Electronics, Apparel, Computers,*' /&gt;" TimeoutMS="2000">
                                   <ui:BrowserScope.Body>
                                     <ActivityAction x:TypeArguments="x:Object">
                                       <ActivityAction.Argument>
@@ -125,7 +125,7 @@
                                 </ui:BrowserScope>
                               </Sequence>
                               <Sequence DisplayName="Data scraping" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Amazoncom Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_7" InformativeScreenshot="9a3f9400fbfb0ce4f3a8c1fc6acfcfd7" Selector="&lt;html app='chrome.exe' omit:title='Amazon.com: ipad - Tablets / Computers &amp;amp; Tablets: Electronics' /&gt;" TimeoutMS="2000">
+                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Scraping Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_7" InformativeScreenshot="9a3f9400fbfb0ce4f3a8c1fc6acfcfd7" Selector="&lt;html app='chrome.exe' title='Amazon.com: *' /&gt;" TimeoutMS="1500">
                                   <ui:BrowserScope.Body>
                                     <ActivityAction x:TypeArguments="x:Object">
                                       <ActivityAction.Argument>
@@ -142,7 +142,7 @@
                                   </ui:BrowserScope.Body>
                                 </ui:BrowserScope>
                               </Sequence>
-                              <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="C:\Users\ranran\Desktop\Ran\UiPath Practice\itemList.xlsx">
+                              <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="[filePath]">
                                 <ui:ExcelApplicationScope.Body>
                                   <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                     <ActivityAction.Argument>
@@ -171,7 +171,7 @@
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxhbWF6b25fc2NyYXBpbmdfaXRlbXNcTWFpbi54YW1sND8DrwEPAgEBQjRCRAIBAkcJUiQCATZVDacBGgIBA0ekAUffAQIBPU0PTxoCATdVgAFViwECATRbE6QBHgIBBE4RTqsBAgE4XBWiASYCAQijARWjAdwBAgEFTqQBTqgBAgE8TnpOhQECATpOkAFOlgECATlczwFc2gECATJiG58BJgIBCaMBqgGjAcoBAgEGYx2dASgCAQueAR2eAYQBAgEKZB9k9AECAS9lH34qAgEifx+QASoCARWRAR+cAToCAQxktAFk4gECATBmIX0zAgEjgAEhjwEzAgEWkQG6AZEB9QECARSXASWZATACAQ1mpwJmkgMCAS5mnQNmowMCAS1sJ3oyAgEkgAGnAoABmwMCASGAAaYDgAGsAwIBIIYBJ4wBMgIBF5gBJ5gB2wECAQ5tKXE3AgEpcil5NAIBJYcBKYsBOgIBGJgB1AGYAdgBAgETmAFXmAFlAgERmAG+AZgBxgECAQ9vvAFv9AECASxtzgJt1gICASp3vAF36QECASh0VXRZAgEndEh0TAIBJocBoB2HAaQdAgEfiQG8AYkB8AECAR6HAWaHAWwCAR2HAUOHAVECARuHAbYdhwHoHQIBGocBvAGHAdwcAgEZ</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxhbWF6b25fc2NyYXBpbmdfaXRlbXNcTWFpbi54YW1sMz8DrwEPAgEBQjRCRAIBA0Q0RG8CAQJICVMkAgE1Vg2nARoCAQRIpAFIsAECATxOD1AaAgE2VoABVosBAgEzXBOkAR4CAQVPEU+rAQIBN10VogEmAgEJowEVowHcAQIBBk+kAU+oAQIBO096T4UBAgE5T5ABT5YBAgE4Xc8BXdoBAgExYxufASYCAQqjAaoBowHKAQIBB2QdnQEoAgEMngEdngGEAQIBC2UffioCASR/H5ABKgIBF5EBH5wBOgIBDWYhfTMCASWAASGPATMCARiRAboBkQHGAQIBFZcBJZkBMAIBDmakAmaPAwIBMGaaA2agAwIBL2wnejICASaAAaYCgAHdAgIBI4AB6AKAAe4CAgEihgEnjAEyAgEZmAEnmAHbAQIBD20pcTcCAStyKXk0AgEnhwEpiwE6AgEamAHUAZgB2AECARSYAVeYAWUCARKYAb4BmAHGAQIBEG+8AW/0AQIBLm3OAm3WAgIBLHe8AXfpAQIBKnRVdFkCASl0SHRMAgEohwGgHYcBpB0CASGJAbwBiQHwAQIBIIcBZocBbAIBH4cBQ4cBUQIBHYcBth2HAegdAgEchwG8AYcB3BwCARs=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -190,7 +190,6 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="MessageBox_5" sap:VirtualizedContainerService.HintSize="436,59" />
       <sap2010:ViewStateData Id="TypeInto_4" sap:VirtualizedContainerService.HintSize="314,134" />
       <sap2010:ViewStateData Id="Click_4" sap:VirtualizedContainerService.HintSize="314,106" />
       <sap2010:ViewStateData Id="Sequence_21" sap:VirtualizedContainerService.HintSize="336,404">
@@ -233,7 +232,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="ExcelApplicationScope_2" sap:VirtualizedContainerService.HintSize="436,320" />
-      <sap2010:ViewStateData Id="Sequence_26" sap:VirtualizedContainerService.HintSize="458,1797">
+      <sap2010:ViewStateData Id="Sequence_26" sap:VirtualizedContainerService.HintSize="458,1698">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -241,14 +240,14 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="CloseTab_2" sap:VirtualizedContainerService.HintSize="458,22" />
-      <sap2010:ViewStateData Id="Sequence_27" sap:VirtualizedContainerService.HintSize="480,1983">
+      <sap2010:ViewStateData Id="Sequence_27" sap:VirtualizedContainerService.HintSize="480,1884">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="OpenBrowser_4" sap:VirtualizedContainerService.HintSize="494,2082" />
+      <sap2010:ViewStateData Id="OpenBrowser_4" sap:VirtualizedContainerService.HintSize="494,1983" />
       <sap2010:ViewStateData Id="MessageBox_3" sap:VirtualizedContainerService.HintSize="494,59">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -256,14 +255,14 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="516,2305">
+      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="516,2206">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="532,2439" />
+      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="532,2340" />
       <sap2010:ViewStateData Id="FlowStep_7">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
