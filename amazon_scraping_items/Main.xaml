@@ -95,67 +95,71 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                           </ActivityAction.Argument>
-                          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Starting to scrape &quot; + item]" TopMost="True" />
+                          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_27">
+                            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_26">
+                              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Now starting to scrape &quot; + item]" TopMost="True" />
+                              <Sequence DisplayName="Recording typing item" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Amazoncom Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="21a1892a62f11e2fc78bcdb00966a001" Selector="&lt;html app='chrome.exe' title='Amazon.com: Online Shopping for Electronics, Apparel, Computers,*' /&gt;" TimeoutMS="2000">
+                                  <ui:BrowserScope.Body>
+                                    <ActivityAction x:TypeArguments="x:Object">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                      </ActivityAction.Argument>
+                                      <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                        <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'INPUT  twotabsearchtext...'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_4" SendWindowMessages="False" SimulateType="True" Text="[item]">
+                                          <ui:TypeInto.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="87d3446d65b5628671972f05842a7be1" Selector="&lt;webctrl id='twotabsearchtextbox' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+                                          </ui:TypeInto.Target>
+                                        </ui:TypeInto>
+                                        <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+                                          <ui:Click.CursorPosition>
+                                            <ui:CursorPosition OffsetX="28" OffsetY="16" Position="TopLeft" />
+                                          </ui:Click.CursorPosition>
+                                          <ui:Click.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9d68a91e3ec03e1b1ed74cab914076a0" Selector="&lt;webctrl tabindex='20' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+                                          </ui:Click.Target>
+                                        </ui:Click>
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </ui:BrowserScope.Body>
+                                </ui:BrowserScope>
+                              </Sequence>
+                              <Sequence DisplayName="Data scraping" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Amazoncom Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_7" InformativeScreenshot="9a3f9400fbfb0ce4f3a8c1fc6acfcfd7" Selector="&lt;html app='chrome.exe' omit:title='Amazon.com: ipad - Tablets / Computers &amp;amp; Tablets: Electronics' /&gt;" TimeoutMS="2000">
+                                  <ui:BrowserScope.Body>
+                                    <ActivityAction x:TypeArguments="x:Object">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                      </ActivityAction.Argument>
+                                      <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                        <ui:ExtractData DataTable="[itemResult]" DelayBetweenPagesMS="1500" DisplayName="Extract Structured Data 'UL  s-results-list-atf'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' class='s-result-item celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-inner' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-col a-col-right' idx='1'/&gt;&lt;/row&gt;&lt;column exact='1' name='Item Name' attr='text' name2='Item URL' attr2='href'&gt;&lt;webctrl tag='li' class='s-result-item celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-inner' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-col a-col-right' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-small' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='a' class='a-link-normal s-access-detail-page  s-color-twister-title-link a-text-normal' idx='1'/&gt;&lt;webctrl tag='h2' class='a-size-medium s-inline  s-access-title  a-text-normal' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Item Price' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-inner' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-col a-col-right' idx='1'/&gt;&lt;webctrl tag='div' class='a-row' idx='1'/&gt;&lt;webctrl tag='div' class='a-column a-span7' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='a' class='a-link-normal a-text-normal' idx='1'/&gt;&lt;webctrl tag='span' class='a-color-base sx-zero-spacing' idx='1'/&gt;&lt;webctrl tag='span' class='sx-price sx-price-large' idx='1'/&gt;&lt;webctrl tag='span' class='sx-price-whole' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Item Rate Score' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-inner' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-col a-col-right' idx='1'/&gt;&lt;webctrl tag='div' class='a-row' idx='1'/&gt;&lt;webctrl tag='div' class='a-column a-span5 a-span-last' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-mini' idx='1'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;webctrl tag='span' class='a-declarative' idx='1'/&gt;&lt;webctrl tag='a' class='a-popover-trigger a-declarative' idx='1'/&gt;&lt;webctrl tag='i' class='a-icon a-icon-star a-star-4-5' idx='1'/&gt;&lt;webctrl tag='span' class='a-icon-alt' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Reviewer Number' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-inner' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-col a-col-right' idx='1'/&gt;&lt;webctrl tag='div' class='a-row' idx='1'/&gt;&lt;webctrl tag='div' class='a-column a-span5 a-span-last' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-mini' idx='1'/&gt;&lt;webctrl tag='a' class='a-size-small a-link-normal a-text-normal' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_3" MaxNumberOfResults="50" NextLinkSelector="&lt;webctrl id='pagnNextString' tag='SPAN' /&gt;">
+                                          <ui:ExtractData.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="4f54d27b77cf6b95e24d341126b70f8a" Selector="&lt;webctrl id='s-results-list-atf' tag='UL' /&gt;" WaitForReady="COMPLETE" />
+                                          </ui:ExtractData.Target>
+                                        </ui:ExtractData>
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </ui:BrowserScope.Body>
+                                </ui:BrowserScope>
+                              </Sequence>
+                              <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="C:\Users\ranran\Desktop\Ran\UiPath Practice\itemList.xlsx">
+                                <ui:ExcelApplicationScope.Body>
+                                  <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                      <ui:ExcelWriteRange AddHeaders="True" DataTable="[itemResult]" DisplayName="Write Range" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[item]" StartingCell="A1" />
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ui:ExcelApplicationScope.Body>
+                              </ui:ExcelApplicationScope>
+                            </Sequence>
+                            <ui:CloseTab Browser="{x:Null}" DisplayName="Close tab" sap2010:WorkflowViewState.IdRef="CloseTab_2" />
+                          </Sequence>
                         </ActivityAction>
                       </ui:OpenBrowser.Body>
                     </ui:OpenBrowser>
-                    <Sequence DisplayName="Recording typing item" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Amazoncom Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="21a1892a62f11e2fc78bcdb00966a001" Selector="&lt;html app='chrome.exe' title='Amazon.com: Online Shopping for Electronics, Apparel, Computers,*' /&gt;" TimeoutMS="2000">
-                        <ui:BrowserScope.Body>
-                          <ActivityAction x:TypeArguments="x:Object">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                            </ActivityAction.Argument>
-                            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_21">
-                              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'INPUT  twotabsearchtext...'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_4" SendWindowMessages="False" SimulateType="True" Text="[item]">
-                                <ui:TypeInto.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="87d3446d65b5628671972f05842a7be1" Selector="&lt;webctrl id='twotabsearchtextbox' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
-                                </ui:TypeInto.Target>
-                              </ui:TypeInto>
-                              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
-                                <ui:Click.CursorPosition>
-                                  <ui:CursorPosition OffsetX="28" OffsetY="16" Position="TopLeft" />
-                                </ui:Click.CursorPosition>
-                                <ui:Click.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9d68a91e3ec03e1b1ed74cab914076a0" Selector="&lt;webctrl tabindex='20' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
-                                </ui:Click.Target>
-                              </ui:Click>
-                            </Sequence>
-                          </ActivityAction>
-                        </ui:BrowserScope.Body>
-                      </ui:BrowserScope>
-                    </Sequence>
-                    <Sequence DisplayName="Data scraping" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Amazoncom Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_7" InformativeScreenshot="9a3f9400fbfb0ce4f3a8c1fc6acfcfd7" Selector="&lt;html app='chrome.exe' title='Amazon.com: ipad - Tablets / Computers &amp;amp; Tablets: Electronics' /&gt;" TimeoutMS="2000">
-                        <ui:BrowserScope.Body>
-                          <ActivityAction x:TypeArguments="x:Object">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                            </ActivityAction.Argument>
-                            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                              <ui:ExtractData DataTable="[itemResult]" DelayBetweenPagesMS="1500" DisplayName="Extract Structured Data 'UL  s-results-list-atf'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' class='s-result-item celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-inner' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-col a-col-right' idx='1'/&gt;&lt;/row&gt;&lt;column exact='1' name='Item Name' attr='text' name2='Item URL' attr2='href'&gt;&lt;webctrl tag='li' class='s-result-item celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-inner' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-col a-col-right' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-small' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='a' class='a-link-normal s-access-detail-page  s-color-twister-title-link a-text-normal' idx='1'/&gt;&lt;webctrl tag='h2' class='a-size-medium s-inline  s-access-title  a-text-normal' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Item Price' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-inner' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-col a-col-right' idx='1'/&gt;&lt;webctrl tag='div' class='a-row' idx='1'/&gt;&lt;webctrl tag='div' class='a-column a-span7' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='a' class='a-link-normal a-text-normal' idx='1'/&gt;&lt;webctrl tag='span' class='a-color-base sx-zero-spacing' idx='1'/&gt;&lt;webctrl tag='span' class='sx-price sx-price-large' idx='1'/&gt;&lt;webctrl tag='span' class='sx-price-whole' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Item Rate Score' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-inner' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-col a-col-right' idx='1'/&gt;&lt;webctrl tag='div' class='a-row' idx='1'/&gt;&lt;webctrl tag='div' class='a-column a-span5 a-span-last' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-mini' idx='1'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;webctrl tag='span' class='a-declarative' idx='1'/&gt;&lt;webctrl tag='a' class='a-popover-trigger a-declarative' idx='1'/&gt;&lt;webctrl tag='i' class='a-icon a-icon-star a-star-4-5' idx='1'/&gt;&lt;webctrl tag='span' class='a-icon-alt' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Reviewer Number' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-inner' idx='1'/&gt;&lt;webctrl tag='div' class='a-fixed-left-grid-col a-col-right' idx='1'/&gt;&lt;webctrl tag='div' class='a-row' idx='1'/&gt;&lt;webctrl tag='div' class='a-column a-span5 a-span-last' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-mini' idx='1'/&gt;&lt;webctrl tag='a' class='a-size-small a-link-normal a-text-normal' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_3" MaxNumberOfResults="20" NextLinkSelector="&lt;webctrl id='pagnNextString' tag='SPAN' /&gt;">
-                                <ui:ExtractData.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="4f54d27b77cf6b95e24d341126b70f8a" Selector="&lt;webctrl id='s-results-list-atf' tag='UL' /&gt;" WaitForReady="COMPLETE" />
-                                </ui:ExtractData.Target>
-                              </ui:ExtractData>
-                            </Sequence>
-                          </ActivityAction>
-                        </ui:BrowserScope.Body>
-                      </ui:BrowserScope>
-                    </Sequence>
-                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="C:\Users\ranran\Desktop\Ran\UiPath Practice\itemList.xlsx">
-                      <ui:ExcelApplicationScope.Body>
-                        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                          <ActivityAction.Argument>
-                            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                          </ActivityAction.Argument>
-                          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                            <ui:ExcelWriteRange AddHeaders="False" DataTable="[itemResult]" DisplayName="Write Range" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[item]" StartingCell="A1" />
-                          </Sequence>
-                        </ActivityAction>
-                      </ui:ExcelApplicationScope.Body>
-                    </ui:ExcelApplicationScope>
-                    <ui:CloseTab Browser="{x:Null}" DisplayName="Close tab" sap2010:WorkflowViewState.IdRef="CloseTab_2" />
                     <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[item + &quot; is done!&quot;]" TopMost="True" />
                   </Sequence>
                 </ActivityAction>
@@ -167,7 +171,7 @@
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxhbWF6b25fc2NyYXBpbmdfaXRlbXNcTWFpbi54YW1sMj8DqwEPAgEBQjRCRAIBAkcJUiQCATRVDaMBGgIBA0ekAUffAQIBO00PTxoCATVVgAFViwECATJbE6ABHgIBBE4RTqsBAgE2XBVlJgIBLGYVfyACAR+AARWRASACARKSARWdATACAQmeARWeAXwCAQifARWfAdwBAgEFTqQBTqgBAgE6TnpOhQECAThOkAFOlgECATdczwFc2gECATBiG2LsAQIBLWcXfikCASCBAReQASkCAROSAbABkgHrAQIBEZgBG5oBJgIBCp8BqgGfAcoBAgEGYrABYtoBAgEuZ50CZ4gDAgErZ5MDZ5kDAgEqbR17KAIBIYEBnQKBAYwDAgEegQGXA4EBnQMCAR2HAR2NASgCARSZAR2ZAdIBAgELbh9yLQIBJnMfeioCASKIAR+MATACARWZAcsBmQHPAQIBEJkBTpkBXAIBDpkBtQGZAb0BAgEMcLIBcOoBAgEpbsQCbswCAgEneLIBeN8BAgEldUt1TwIBJHU+dUICASOIAZYdiAGaHQIBHIoBsgGKAeYBAgEbiAFciAFiAgEaiAE5iAFHAgEYiAGsHYgB3h0CAReIAbIBiAHSHAIBFg==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxhbWF6b25fc2NyYXBpbmdfaXRlbXNcTWFpbi54YW1sND8DrwEPAgEBQjRCRAIBAkcJUiQCATZVDacBGgIBA0ekAUffAQIBPU0PTxoCATdVgAFViwECATRbE6QBHgIBBE4RTqsBAgE4XBWiASYCAQijARWjAdwBAgEFTqQBTqgBAgE8TnpOhQECATpOkAFOlgECATlczwFc2gECATJiG58BJgIBCaMBqgGjAcoBAgEGYx2dASgCAQueAR2eAYQBAgEKZB9k9AECAS9lH34qAgEifx+QASoCARWRAR+cAToCAQxktAFk4gECATBmIX0zAgEjgAEhjwEzAgEWkQG6AZEB9QECARSXASWZATACAQ1mpwJmkgMCAS5mnQNmowMCAS1sJ3oyAgEkgAGnAoABmwMCASGAAaYDgAGsAwIBIIYBJ4wBMgIBF5gBJ5gB2wECAQ5tKXE3AgEpcil5NAIBJYcBKYsBOgIBGJgB1AGYAdgBAgETmAFXmAFlAgERmAG+AZgBxgECAQ9vvAFv9AECASxtzgJt1gICASp3vAF36QECASh0VXRZAgEndEh0TAIBJocBoB2HAaQdAgEfiQG8AYkB8AECAR6HAWaHAWwCAR2HAUOHAVECARuHAbYdhwHoHQIBGocBvAGHAdwcAgEZ</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -186,8 +190,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="MessageBox_5" sap:VirtualizedContainerService.HintSize="314,59" />
-      <sap2010:ViewStateData Id="OpenBrowser_4" sap:VirtualizedContainerService.HintSize="436,158" />
+      <sap2010:ViewStateData Id="MessageBox_5" sap:VirtualizedContainerService.HintSize="436,59" />
       <sap2010:ViewStateData Id="TypeInto_4" sap:VirtualizedContainerService.HintSize="314,134" />
       <sap2010:ViewStateData Id="Click_4" sap:VirtualizedContainerService.HintSize="314,106" />
       <sap2010:ViewStateData Id="Sequence_21" sap:VirtualizedContainerService.HintSize="336,404">
@@ -230,26 +233,41 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="ExcelApplicationScope_2" sap:VirtualizedContainerService.HintSize="436,320" />
-      <sap2010:ViewStateData Id="CloseTab_2" sap:VirtualizedContainerService.HintSize="436,22" />
-      <sap2010:ViewStateData Id="MessageBox_3" sap:VirtualizedContainerService.HintSize="436,59">
+      <sap2010:ViewStateData Id="Sequence_26" sap:VirtualizedContainerService.HintSize="458,1797">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="458,2057">
+      <sap2010:ViewStateData Id="CloseTab_2" sap:VirtualizedContainerService.HintSize="458,22" />
+      <sap2010:ViewStateData Id="Sequence_27" sap:VirtualizedContainerService.HintSize="480,1983">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="474,2191" />
+      <sap2010:ViewStateData Id="OpenBrowser_4" sap:VirtualizedContainerService.HintSize="494,2082" />
+      <sap2010:ViewStateData Id="MessageBox_3" sap:VirtualizedContainerService.HintSize="494,59">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="516,2305">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="532,2439" />
       <sap2010:ViewStateData Id="FlowStep_7">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">500,234.5</av:Point>
+            <av:Point x:Key="ShapeLocation">400,254.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -257,9 +275,9 @@
       <sap2010:ViewStateData Id="FlowStep_5">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">500,124.5</av:Point>
+            <av:Point x:Key="ShapeLocation">400,114.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">600,175.5 600,234.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">500,165.5 500,254.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -267,9 +285,9 @@
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Point x:Key="ShapeLocation">200,112.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">330,40 360,40 360,150 500,150</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">260,150 290,150 290,140 400,140</av:PointCollection>
             <x:Double x:Key="Width">1026</x:Double>
             <x:Double x:Key="Height">608</x:Double>
           </scg:Dictionary>
