@@ -201,6 +201,7 @@
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
                             </ui:TypeInto.Target>
                           </ui:TypeInto>
+                          <Delay Duration="00:00:30" sap2010:WorkflowViewState.IdRef="Delay_1" />
                           <ui:CloseApplication DisplayName="Close application" sap2010:WorkflowViewState.IdRef="CloseApplication_2">
                             <ui:CloseApplication.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
@@ -220,7 +221,7 @@
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID2</x:Reference>
-    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxhbWF6b25fc2NyYXBpbmdfaXRlbXNcTWFpbi54YW1sRD8D4AEPAgEBQjRCRAIBBkM0Q0MCAQVEOERVAgEERTRFOwIBA0Y0Rn0CAQJKCVUkAgFHWA2oARoCARmrARHVARwCAQdKpAFKsAECAU5QD1IaAgFIWIABWIsBAgFFXhOlAR4CARqsARPUASgCAQhREVGrAQIBSV8VpAEmAgEbrAGNAqwBqgICARisAbIBrAHPAQIBF7IBGdEBJAIBCVGkAVGoAQIBTVF6UYUBAgFLUZABUZYBAgFKX88BX9oBAgFDZRuhASYCARyzARu3ASkCARS4ARu8ASkCARK9ARvBASkCAQ/CARvGASkCAQ3HARvLASkCAQvMARvQATECAQpmHZ8BKAIBHqABHaABhAECAR2zAaUCswHLAgIBFbgBpQK4Ab4CAgETvQGlAr0B4gICARDCAaUCwgG5AgIBDscBpQLHAbkCAgEMZx+AASoCATaBAR+SASoCASmTAR+eAToCAR9oIX8zAgE3ggEhkQEzAgEqkwG6AZMBxgECASeZASWbATACASBo0AJohwMCAUJoqwFosQECAUFuJ3wyAgE4ggG8AoIB+AICATWIASeOATICASuaASeaAeoBAgEhbylzNwIBPXQpezQCATmJASmNAToCASyaAeMBmgHnAQIBJpoBV5oBawIBJJoBxAGaAdUBAgEicbwBcfQBAgFAb84Cb98CAgE+ebwBeekBAgE8dlV2WQIBO3ZIdkwCATqJAYkTiQGNEwIBNIsBvAGLAfABAgEziQGDAYkBiAECATKJAUmJAU8CATGJAVqJAW4CAS+JAZ8TiQHREwIBLokB2AGJAcUSAgEt</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxhbWF6b25fc2NyYXBpbmdfaXRlbXNcTWFpbi54YW1sRj8D4QEPAgEBQjRCRAIBBkM0Q0MCAQVEOERVAgEERTRFOwIBA0Y0Rn0CAQJKCVUkAgFJWA2oARoCARurARHWARwCAQdKpAFKsAECAVBQD1IaAgFKWIABWIsBAgFHXhOlAR4CARysARPVASgCAQhREVGrAQIBS18VpAEmAgEdrAGNAqwBqgICARqsAbIBrAHPAQIBGbIBGdIBJAIBCVGkAVGoAQIBT1F6UYUBAgFNUZABUZYBAgFMX88BX9oBAgFFZRuhASYCAR6zARu3ASkCARa4ARu8ASkCARS9ARvBASkCARHCARvGASkCAQ/HARvLASkCAQ3MARvMAWICAQvNARvRATECAQpmHZ8BKAIBIKABHaABhAECAR+zAaUCswHLAgIBF7gBpQK4Ab4CAgEVvQGlAr0B4gICARLCAaUCwgG5AgIBEMcBpQLHAbkCAgEOzAErzAE1AgEMZx+AASoCATiBAR+SASoCASuTAR+eAToCASFoIX8zAgE5ggEhkQEzAgEskwG6AZMBxgECASmZASWbATACASJo0AJohwMCAURoqwFosQECAUNuJ3wyAgE6ggG8AoIB+AICATeIASeOATICAS2aASeaAeoBAgEjbylzNwIBP3QpezQCATuJASmNAToCAS6aAeMBmgHnAQIBKJoBV5oBawIBJpoBxAGaAdUBAgEkcbwBcfQBAgFCb84Cb98CAgFAebwBeekBAgE+dlV2WQIBPXZIdkwCATyJAYkTiQGNEwIBNosBvAGLAfABAgE1iQGDAYkBiAECATSJAUmJAU8CATOJAVqJAW4CATGJAZ8TiQHREwIBMIkB2AGJAcUSAgEv</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -310,16 +311,17 @@
       <sap2010:ViewStateData Id="TypeInto_7" sap:VirtualizedContainerService.HintSize="314,96" />
       <sap2010:ViewStateData Id="TypeInto_8" sap:VirtualizedContainerService.HintSize="314,96" />
       <sap2010:ViewStateData Id="TypeInto_9" sap:VirtualizedContainerService.HintSize="314,96" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="314,22" />
       <sap2010:ViewStateData Id="CloseApplication_2" sap:VirtualizedContainerService.HintSize="314,68" />
-      <sap2010:ViewStateData Id="Sequence_34" sap:VirtualizedContainerService.HintSize="336,872">
+      <sap2010:ViewStateData Id="Sequence_34" sap:VirtualizedContainerService.HintSize="336,934">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="OpenApplication_1" sap:VirtualizedContainerService.HintSize="414,980" />
-      <sap2010:ViewStateData Id="Sequence_33" sap:VirtualizedContainerService.HintSize="436,1104">
+      <sap2010:ViewStateData Id="OpenApplication_1" sap:VirtualizedContainerService.HintSize="414,1042" />
+      <sap2010:ViewStateData Id="Sequence_33" sap:VirtualizedContainerService.HintSize="436,1166">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
