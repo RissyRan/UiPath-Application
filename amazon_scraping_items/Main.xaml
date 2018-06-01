@@ -64,8 +64,9 @@
     <Flowchart.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="columns" />
       <Variable x:TypeArguments="x:String" Default="www.amazon.com" Name="website" />
-      <Variable x:TypeArguments="x:String" Default="C:\Users\ranran\Desktop\Ran\UiPath Practice\itemList.xlsx" Name="filePath" />
+      <Variable x:TypeArguments="x:String" Default="itemList.xlsx" Name="filePath" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+      <Variable x:TypeArguments="x:String" Default="cd Documents/UiPath-Application" Name="gitAddress" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
@@ -99,7 +100,7 @@
                           <Sequence sap2010:WorkflowViewState.IdRef="Sequence_27">
                             <Sequence sap2010:WorkflowViewState.IdRef="Sequence_26">
                               <Sequence DisplayName="Recording typing item" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Typing Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="21a1892a62f11e2fc78bcdb00966a001" Selector="&lt;html app='chrome.exe' title='Amazon.com: *' /&gt;">
+                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" ContinueOnError="True" DisplayName="Attach Browser 'Typing Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="21a1892a62f11e2fc78bcdb00966a001" Selector="&lt;html app='chrome.exe' title='Amazon.com: *' /&gt;">
                                   <ui:BrowserScope.Body>
                                     <ActivityAction x:TypeArguments="x:Object">
                                       <ActivityAction.Argument>
@@ -125,14 +126,14 @@
                                 </ui:BrowserScope>
                               </Sequence>
                               <Sequence DisplayName="Data scraping sequance" sap2010:WorkflowViewState.IdRef="Sequence_32">
-                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Amazoncom Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_9" InformativeScreenshot="5c421c5220ad77d23f0b6413636b8555" Selector="&lt;html app='chrome.exe' title='Amazon.com: *' /&gt;">
+                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Amazoncom Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_9" InformativeScreenshot="5c421c5220ad77d23f0b6413636b8555" Selector="&lt;html app='chrome.exe' omit:title='Amazon.com: *' /&gt;">
                                   <ui:BrowserScope.Body>
                                     <ActivityAction x:TypeArguments="x:Object">
                                       <ActivityAction.Argument>
                                         <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                                       </ActivityAction.Argument>
                                       <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                                        <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="100" DisplayName="Extract Structured Data 'UL  s-results-list-atf'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' class='s-result-item  celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;/row&gt;&lt;column exact='1' name='Name of product' attr='text' name2='URL of product' attr2='href'&gt;&lt;webctrl tag='li' class='s-result-item  celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-mini' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none sx-line-clamp-4' idx='1'/&gt;&lt;webctrl tag='a' class='a-link-normal s-access-detail-page  s-color-twister-title-link a-text-normal' idx='1'/&gt;&lt;webctrl tag='h2' class='a-size-base s-inline  s-access-title  a-text-normal' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Rate' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item  celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;webctrl tag='span' class='a-declarative' idx='1'/&gt;&lt;webctrl tag='a' class='a-popover-trigger a-declarative' idx='1'/&gt;&lt;webctrl tag='i'/&gt;&lt;webctrl tag='span' class='a-icon-alt' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Reviewer' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item  celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='a' class='a-size-small a-link-normal a-text-normal' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Price' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item  celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-mini' idx='2'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='a' class='a-link-normal a-text-normal' idx='1'/&gt;&lt;webctrl tag='span' class='a-color-base sx-zero-spacing' idx='1'/&gt;&lt;webctrl tag='span' class='sx-price sx-price-large' idx='1'/&gt;&lt;webctrl tag='span' class='sx-price-whole' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_5" MaxNumberOfResults="5" NextLinkSelector="&lt;webctrl id='pagnNextString' tag='SPAN' /&gt;">
+                                        <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="100" DisplayName="Extract Structured Data 'UL  s-results-list-atf'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' class='s-result-item  celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;/row&gt;&lt;column exact='1' name='Name of product' attr='text' name2='URL of product' attr2='href'&gt;&lt;webctrl tag='li' class='s-result-item  celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-mini' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none sx-line-clamp-4' idx='1'/&gt;&lt;webctrl tag='a' class='a-link-normal s-access-detail-page  s-color-twister-title-link a-text-normal' idx='1'/&gt;&lt;webctrl tag='h2' class='a-size-base s-inline  s-access-title  a-text-normal' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Rate' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item  celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;webctrl tag='span' class='a-declarative' idx='1'/&gt;&lt;webctrl tag='a' class='a-popover-trigger a-declarative' idx='1'/&gt;&lt;webctrl tag='i'/&gt;&lt;webctrl tag='span' class='a-icon-alt' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Reviewer' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item  celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='a' class='a-size-small a-link-normal a-text-normal' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Price' attr='text'&gt;&lt;webctrl tag='li' class='s-result-item  celwidget  '/&gt;&lt;webctrl tag='div' class='s-item-container' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-mini' idx='2'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='a' class='a-link-normal a-text-normal' idx='1'/&gt;&lt;webctrl tag='span' class='a-color-base sx-zero-spacing' idx='1'/&gt;&lt;webctrl tag='span' class='sx-price sx-price-large' idx='1'/&gt;&lt;webctrl tag='span' class='sx-price-whole' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_5" MaxNumberOfResults="10" NextLinkSelector="&lt;webctrl id='pagnNextString' tag='SPAN' /&gt;">
                                           <ui:ExtractData.Target>
                                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="589d4b486a1ece88fa89000231f99dff" Selector="&lt;webctrl id='s-results-list-atf' tag='UL' /&gt;" WaitForReady="COMPLETE" />
                                           </ui:ExtractData.Target>
@@ -160,18 +161,85 @@
                         </ActivityAction>
                       </ui:OpenBrowser.Body>
                     </ui:OpenBrowser>
-                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[item + &quot; is done!&quot;]" TopMost="True" />
                   </Sequence>
                 </ActivityAction>
               </ui:ForEach.Body>
             </ui:ForEach>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_9">
+                <Sequence DisplayName="Git" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                  <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open application" FileName="C:\Windows\System32\cmd.exe" sap2010:WorkflowViewState.IdRef="OpenApplication_1" Selector="&lt;wnd app='cmd.exe' /&gt;">
+                    <ui:OpenApplication.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_5" SendWindowMessages="False" SimulateType="False" Text="[gitAddress]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SendWindowMessages="False" SpecialKey="True">
+                            <ui:SendHotkey.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:SendHotkey.Target>
+                          </ui:SendHotkey>
+                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_6" SendWindowMessages="False" SimulateType="False" Text="git add --all">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="enter" KeyModifiers="None" SendWindowMessages="False" SpecialKey="True">
+                            <ui:SendHotkey.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:SendHotkey.Target>
+                          </ui:SendHotkey>
+                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_7" SendWindowMessages="False" SimulateType="False" Text="git commit --all">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="enter" KeyModifiers="None" SendWindowMessages="False" SpecialKey="True">
+                            <ui:SendHotkey.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:SendHotkey.Target>
+                          </ui:SendHotkey>
+                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_8" SendWindowMessages="False" SimulateType="False" Text="git pull">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="enter" KeyModifiers="None" SendWindowMessages="False" SpecialKey="True">
+                            <ui:SendHotkey.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:SendHotkey.Target>
+                          </ui:SendHotkey>
+                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_9" SendWindowMessages="False" SimulateType="False" Text="git push">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_5" Key="enter" KeyModifiers="None" SendWindowMessages="False" SpecialKey="True">
+                            <ui:SendHotkey.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:SendHotkey.Target>
+                          </ui:SendHotkey>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:OpenApplication.Body>
+                  </ui:OpenApplication>
+                </Sequence>
+              </FlowStep>
+            </FlowStep.Next>
           </FlowStep>
         </FlowStep.Next>
       </FlowStep>
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxhbWF6b25fc2NyYXBpbmdfaXRlbXNcTWFpbi54YW1sMz8DrwEPAgEBQjRCRAIBBEM0Q28CAQNEOERVAgECSAlTJAIBNVYNpwEaAgEFSKQBSLABAgE8Tg9QGgIBNlaAAVaLAQIBM1wTpAEeAgEGTxFPqwECATddFaIBJgIBCqMBFaMB3AECAQdPpAFPqAECATtPek+FAQIBOU+QAU+WAQIBOF3PAV3aAQIBMWMbnwEmAgELowGqAaMBygECAQhkHZ0BKAIBDZ4BHZ4BhAECAQxlH34qAgElfx+QASoCARiRAR+cAToCAQ5mIX0zAgEmgAEhjwEzAgEZkQG6AZEBxgECARaXASWZATACAQ9muQJm8AICATBsJ3oyAgEngAG8AoAB8wICASSGASeMATICARqYASeYAeoBAgEQbSlxNwIBLHIpeTQCASiHASmLAToCARuYAeMBmAHnAQIBFZgBV5gBawIBE5gBxAGYAdUBAgERb7wBb/QBAgEvbc4Cbd8CAgEtd7wBd+kBAgErdFV0WQIBKnRIdEwCASmHAYkThwGMEwIBI4kBvAGJAfABAgEihwGDAYcBiAECASGHAUmHAU8CASCHAVqHAW4CAR6HAZ4ThwHQEwIBHYcB2AGHAcUSAgEc</sads:DebugSymbol.Symbol>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxhbWF6b25fc2NyYXBpbmdfaXRlbXNcTWFpbi54YW1sRz8D8wEPAgEBQjRCRAIBBUM0Q0MCAQREOERVAgEDRTRFVQIBAkkJVCQCAUlXDacBGgIBG6oBEegBHAIBBkmkAUmwAQIBUE8PURoCAUpXgAFXiwECAUddE6QBHgIBHKsBE+cBKAIBB1ARUKsBAgFLXhWjASYCAR2rAY0CqwGqAgIBGqsBsgGrAc8BAgEZsQEZ5AEkAgEIUKQBUKgBAgFPUHpQhQECAU1QkAFQlgECAUxezwFe2gECAUVkG6ABJgIBHrIBG7YBKQIBFrcBG7sBKwIBFbwBG8ABKQIBE8EBG8UBKwIBEsYBG8oBKQIBEMsBG88BKwIBD9ABG9QBKQIBDdUBG9kBKwIBDNoBG94BKQIBCt8BG+MBKwIBCWUdngEoAgEgnwEdnwGEAQIBH7IBpQKyAbMCAgEXvAGlArwBtAICARTGAaUCxgG3AgIBEdABpQLQAa8CAgEO2gGlAtoBrwICAQtmH38qAgE4gAEfkQEqAgErkgEfnQE6AgEhZyF+MwIBOYEBIZABMwIBLJIBugGSAcYBAgEpmAElmgEwAgEiZ9ACZ4cDAgFEZ6sBZ7EBAgFDbSd7MgIBOoEBvAKBAfgCAgE3hwEnjQEyAgEtmQEnmQHqAQIBI24pcjcCAT9zKXo0AgE7iAEpjAE6AgEumQHjAZkB5wECASiZAVeZAWsCASaZAcQBmQHVAQIBJHC8AXD0AQIBQm7OAm7fAgIBQHi8AXjpAQIBPnVVdVkCAT11SHVMAgE8iAGJE4gBjRMCATaKAbwBigHwAQIBNYgBgwGIAYgBAgE0iAFJiAFPAgEziAFaiAFuAgExiAGfE4gB0RMCATCIAdgBiAHFEgIBLw==</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -248,26 +316,53 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="OpenBrowser_4" sap:VirtualizedContainerService.HintSize="494,1983" />
-      <sap2010:ViewStateData Id="MessageBox_3" sap:VirtualizedContainerService.HintSize="494,59">
+      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="516,2107">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="516,2206">
+      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="200,51" />
+      <sap2010:ViewStateData Id="TypeInto_5" sap:VirtualizedContainerService.HintSize="314,96" />
+      <sap2010:ViewStateData Id="SendHotkey_1" sap:VirtualizedContainerService.HintSize="314,116" />
+      <sap2010:ViewStateData Id="TypeInto_6" sap:VirtualizedContainerService.HintSize="314,96" />
+      <sap2010:ViewStateData Id="SendHotkey_2" sap:VirtualizedContainerService.HintSize="314,116" />
+      <sap2010:ViewStateData Id="TypeInto_7" sap:VirtualizedContainerService.HintSize="314,96" />
+      <sap2010:ViewStateData Id="SendHotkey_3" sap:VirtualizedContainerService.HintSize="314,116" />
+      <sap2010:ViewStateData Id="TypeInto_8" sap:VirtualizedContainerService.HintSize="314,96" />
+      <sap2010:ViewStateData Id="SendHotkey_4" sap:VirtualizedContainerService.HintSize="314,116" />
+      <sap2010:ViewStateData Id="TypeInto_9" sap:VirtualizedContainerService.HintSize="314,96" />
+      <sap2010:ViewStateData Id="SendHotkey_5" sap:VirtualizedContainerService.HintSize="314,116" />
+      <sap2010:ViewStateData Id="Sequence_34" sap:VirtualizedContainerService.HintSize="336,1544">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="532,2340" />
+      <sap2010:ViewStateData Id="OpenApplication_1" sap:VirtualizedContainerService.HintSize="414,1652" />
+      <sap2010:ViewStateData Id="Sequence_33" sap:VirtualizedContainerService.HintSize="436,1776">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_9">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">400,374.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="FlowStep_7">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">400,254.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">500,305.5 500,374.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
