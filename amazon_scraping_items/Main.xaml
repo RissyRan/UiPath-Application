@@ -66,7 +66,8 @@
       <Variable x:TypeArguments="x:String" Default="www.amazon.com" Name="website" />
       <Variable x:TypeArguments="x:String" Default="itemList.xlsx" Name="filePath" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
-      <Variable x:TypeArguments="x:String" Default="cd Documents/UiPath-Application" Name="gitAddress" />
+      <Variable x:TypeArguments="x:String" Default="cd .." Name="gitAddress" />
+      <Variable x:TypeArguments="x:String" Default="[&quot;&quot;&quot;auto update&quot;&quot;&quot;]" Name="message" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
@@ -195,7 +196,7 @@
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
                             </ui:SendHotkey.Target>
                           </ui:SendHotkey>
-                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_7" SendWindowMessages="False" SimulateType="False" Text="git commit --all">
+                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_7" SendWindowMessages="False" SimulateType="False" Text="[&quot;git commit -m&quot;+message]">
                             <ui:TypeInto.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
                             </ui:TypeInto.Target>
@@ -239,7 +240,7 @@
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID2</x:Reference>
-    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxhbWF6b25fc2NyYXBpbmdfaXRlbXNcTWFpbi54YW1sRz8D8wEPAgEBQjRCRAIBBUM0Q0MCAQREOERVAgEDRTRFVQIBAkkJVCQCAUlXDacBGgIBG6oBEegBHAIBBkmkAUmwAQIBUE8PURoCAUpXgAFXiwECAUddE6QBHgIBHKsBE+cBKAIBB1ARUKsBAgFLXhWjASYCAR2rAY0CqwGqAgIBGqsBsgGrAc8BAgEZsQEZ5AEkAgEIUKQBUKgBAgFPUHpQhQECAU1QkAFQlgECAUxezwFe2gECAUVkG6ABJgIBHrIBG7YBKQIBFrcBG7sBKwIBFbwBG8ABKQIBE8EBG8UBKwIBEsYBG8oBKQIBEMsBG88BKwIBD9ABG9QBKQIBDdUBG9kBKwIBDNoBG94BKQIBCt8BG+MBKwIBCWUdngEoAgEgnwEdnwGEAQIBH7IBpQKyAbMCAgEXvAGlArwBtAICARTGAaUCxgG3AgIBEdABpQLQAa8CAgEO2gGlAtoBrwICAQtmH38qAgE4gAEfkQEqAgErkgEfnQE6AgEhZyF+MwIBOYEBIZABMwIBLJIBugGSAcYBAgEpmAElmgEwAgEiZ9ACZ4cDAgFEZ6sBZ7EBAgFDbSd7MgIBOoEBvAKBAfgCAgE3hwEnjQEyAgEtmQEnmQHqAQIBI24pcjcCAT9zKXo0AgE7iAEpjAE6AgEumQHjAZkB5wECASiZAVeZAWsCASaZAcQBmQHVAQIBJHC8AXD0AQIBQm7OAm7fAgIBQHi8AXjpAQIBPnVVdVkCAT11SHVMAgE8iAGJE4gBjRMCATaKAbwBigHwAQIBNYgBgwGIAYgBAgE0iAFJiAFPAgEziAFaiAFuAgExiAGfE4gB0RMCATCIAdgBiAHFEgIBLw==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxhbWF6b25fc2NyYXBpbmdfaXRlbXNcTWFpbi54YW1sSD8D9AEPAgEBQjRCRAIBBkM0Q0MCAQVEOERVAgEERTRFOwIBA0Y0RmcCAQJKCVUkAgFLWA2oARoCAR2rARHpARwCAQdKpAFKsAECAVJQD1IaAgFMWIABWIsBAgFJXhOlAR4CAR6sARPoASgCAQhREVGrAQIBTV8VpAEmAgEfrAGNAqwBqgICARysAbIBrAHPAQIBG7IBGeUBJAIBCVGkAVGoAQIBUVF6UYUBAgFPUZABUZYBAgFOX88BX9oBAgFHZRuhASYCASCzARu3ASkCARi4ARu8ASsCARe9ARvBASkCARXCARvGASsCARTHARvLASkCARHMARvQASsCARDRARvVASkCAQ7WARvaASsCAQ3bARvfASkCAQvgARvkASsCAQpmHZ8BKAIBIqABHaABhAECASGzAaUCswGzAgIBGb0BpQK9AbQCAgEWxwGlAscBygICARLRAaUC0QGvAgIBD9sBpQLbAa8CAgEMZx+AASoCATqBAR+SASoCAS2TAR+eAToCASNoIX8zAgE7ggEhkQEzAgEukwG6AZMBxgECASuZASWbATACASRo0AJohwMCAUZoqwFosQECAUVuJ3wyAgE8ggG8AoIB+AICATmIASeOATICAS+aASeaAeoBAgElbylzNwIBQXQpezQCAT2JASmNAToCATCaAeMBmgHnAQIBKpoBV5oBawIBKJoBxAGaAdUBAgEmcbwBcfQBAgFEb84Cb98CAgFCebwBeekBAgFAdlV2WQIBP3ZIdkwCAT6JAYkTiQGNEwIBOIsBvAGLAfABAgE3iQGDAYkBiAECATaJAUmJAU8CATWJAVqJAW4CATOJAZ8TiQHREwIBMokB2AGJAcUSAgEx</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -342,7 +343,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="OpenApplication_1" sap:VirtualizedContainerService.HintSize="414,1652" />
-      <sap2010:ViewStateData Id="Sequence_33" sap:VirtualizedContainerService.HintSize="436,1776">
+      <sap2010:ViewStateData Id="Sequence_33" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
