@@ -1,0 +1,32 @@
+Analytics
+Steve Wasson
+choices and change the outcome for the future.
+So, when you think about our Analytics solutions, whether it be financial, operational or clinical
+analytics solutions, what it's really doing, it's taking information, data, and it's drawing some
+normalcy to it, so you can decide what the best course is for you and the organization and
+have a different outcome, than if you didn't change any behavior.
+So, it's really just giving you a guide for the future.
+How And To Whom Do We Deliver The Solution?
+So, it's important to know that we have varying offerings of Analytics. And, depending on the
+use case and depending on the solution, you may have install or cloud-based offerings.
+Generally, we're optimizing to the Cloud. We're optimizing toward data platform, and we're
+optimizing to bring all data together and have those analytics sitting on top of it.
+We do have varying technology ways in which we supply them to our customers. So, as a sales
+person, it's important to know which ones are offered in which manner.
+What Are the Regulatory Factors At Play?
+Operating in healthcare, you always have to be aware of the impact, from a regulatory
+perspective. Analytics solutions really are governed from the data in which we're using. So,
+depending on the data that is supplied into the Analytics solution, you need to be aware of
+the use cases and what you can or cannot do with this specific data. So, if it's HIPAA
+protected or if it has some protections around it for privacy, you need to be aware of that.
+What Are The Key Milestones On the Solution Roadmap?
+When you think about our global solutions, from the analytics perspective, for all our solutions,
+we're really navigating to get the acquisition of data, cost of acquisition of data, down to the
+lowest that we can. So, making it, so that if you acquire data for one Analytics solution, you
+can use that same data for a different use space in a different analytics solutions.
+And so, when you think about our milestones for our roadmap, we're really optimizing to put all
+of our data in one place, have it in a data platform that can be leveraged throughout
+Change Healthcare, and having the Analytics solution sit on top of that. Now, that's not a
+reality, today, in all cases, but that's definitely where we're investing and we're optimizing for.
+What Are The Typical Pricing And Contractual Provisions?
+02017 CHANGE HEALTHCARE OPERATIONS, LLC. ALL RIGHTS RESERVED. 3
