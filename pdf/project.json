@@ -2,13 +2,24 @@
   "name": "pdf",
   "description": "Blank Project",
   "main": "Main.xaml",
-  "dependencies": {},
+  "dependencies": {
+    "OutlookActivities": "1.0.24.0",
+    "UiPath.Core.Activities": "18.2.6716.31776",
+    "UiPath.Database.Activities": "1.1.6660.26865",
+    "UiPath.Excel.Activities": "2.3.6682.26635",
+    "UiPath.Mail.Activities": "1.1.6562.21018",
+    "UiPath.PDF.Activities": "1.0.6479.13204",
+    "UiPath.Python.Activities": "1.0.6716.23055",
+    "UiPath.Terminal.Activities": "1.1.6464.20815",
+    "UiPath.WebAPI.Activities": "1.1.6479.13209",
+    "UiPath.Word.Activities": "1.1.6479.13205"
+  },
   "excludedData": [
     "Private:*",
     "*password*"
   ],
   "toolVersion": "18.1.4.0",
-  "projectVersion": "1.0.6729.18701",
+  "projectVersion": "1.0.6730.17438",
   "packOptions": {},
   "runtimeOptions": {}
 }

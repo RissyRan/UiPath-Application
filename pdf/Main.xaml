@@ -58,32 +58,35 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1" StartNode="{x:Reference __ReferenceID0}">
-    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_1">
-      <Sequence DisplayName="OCR" sap2010:WorkflowViewState.IdRef="Sequence_4">
-        <Sequence.Variables>
-          <Variable x:TypeArguments="x:String" Name="content" />
-          <Variable x:TypeArguments="x:String" Default="output.txt" Name="saveFile" />
-        </Sequence.Variables>
-        <ui:ReadPDFWithOCR DisplayName="Read PDF with OCR" FileName="Achiever.pdf" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_3" Range="All" Text="[content]">
-          <ui:ReadPDFWithOCR.OCREngine>
-            <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
-              <ActivityFunc.Argument>
-                <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-              </ActivityFunc.Argument>
-              <ui:GoogleOCR FilterRegion="{x:Null}" Text="{x:Null}" AllowedCharacters="" DeniedCharacters="" DisplayName="Google OCR" ExtractWords="False" sap2010:WorkflowViewState.IdRef="GoogleOCR_4" Image="[Image]" Invert="False" Language="eng" Profile="Legacy" Scale="2" />
-            </ActivityFunc>
-          </ui:ReadPDFWithOCR.OCREngine>
-        </ui:ReadPDFWithOCR>
-        <ui:WriteTextFile DisplayName="Write text file" FileName="[saveFile]" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[content]" />
-      </Sequence>
-    </FlowStep>
-    <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
-      <Sequence DisplayName="Anchor" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+        <Sequence DisplayName="OCR" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="content" />
+            <Variable x:TypeArguments="x:String" Default="output.txt" Name="saveFile" />
+          </Sequence.Variables>
+          <ui:ReadPDFWithOCR DisplayName="Read PDF with OCR" FileName="Achiever.pdf" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_3" Range="All" Text="[content]">
+            <ui:ReadPDFWithOCR.OCREngine>
+              <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+                <ActivityFunc.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                </ActivityFunc.Argument>
+                <ui:GoogleOCR FilterRegion="{x:Null}" Text="{x:Null}" AllowedCharacters="" DeniedCharacters="" DisplayName="Google OCR" ExtractWords="False" sap2010:WorkflowViewState.IdRef="GoogleOCR_4" Image="[Image]" Invert="False" Language="eng" Profile="Legacy" Scale="2" />
+              </ActivityFunc>
+            </ui:ReadPDFWithOCR.OCREngine>
+          </ui:ReadPDFWithOCR>
+          <ui:WriteTextFile DisplayName="Write text file" FileName="[saveFile]" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[content]" />
+        </Sequence>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_2">
+      <Sequence DisplayName="Anchor-find element" sap2010:WorkflowViewState.IdRef="Sequence_5">
         <Sequence.Variables>
           <Variable x:TypeArguments="ui:GenericValue" Name="course" />
         </Sequence.Variables>
-        <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor base" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
+        <ui:AnchorBase AnchorPosition="Top" DisplayName="Anchor base" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
           <ui:AnchorBase.Action>
             <ActivityAction x:TypeArguments="ui:Anchor">
               <ActivityAction.Argument>
@@ -110,14 +113,49 @@
         <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[course]" TopMost="True" />
       </Sequence>
     </FlowStep>
-    <sads:DebugSymbol.Symbol>dzpDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxwZGZcTWFpbi54YW1sCj0Dcg8CAQFSB28SAgECVgltGQIBBW4JbroBAgEDZw1rJgIBClwPYx0CAQZungFuqAECAQRpoAFpiAMCAQthQmFKAgEHXqIBXsEBAgEJ</sads:DebugSymbol.Symbol>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_3">
+      <Sequence DisplayName="Anchor-find image" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="ui:GenericValue" Name="courseName" />
+        </Sequence.Variables>
+        <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor base" sap2010:WorkflowViewState.IdRef="AnchorBase_2">
+          <ui:AnchorBase.Action>
+            <ActivityAction x:TypeArguments="ui:Anchor">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+              </ActivityAction.Argument>
+              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'graphic (Optional)'" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                <ui:GetValue.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="e97b6dfb5d875c9cfd73017b7fbad0e8" Selector="&lt;ctrl role='graphic' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:GetValue.Target>
+                <ui:GetValue.Value>
+                  <OutArgument x:TypeArguments="ui:GenericValue">[courseName]</OutArgument>
+                </ui:GetValue.Value>
+              </ui:GetValue>
+            </ActivityAction>
+          </ui:AnchorBase.Action>
+          <ui:AnchorBase.AnchorProvider>
+            <ui:WaitImageAppear FoundElement="{x:Null}" DisplayName="Find Image 'AcroRd32.exe certificat...'" sap2010:WorkflowViewState.IdRef="WaitImageAppear_2">
+              <ui:WaitImageAppear.Image>
+                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="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" />
+              </ui:WaitImageAppear.Image>
+              <ui:WaitImageAppear.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;wnd app='acrord32.exe' cls='AcrobatSDIWindow' title='certificate8.pdf (SECURED) - Adobe Acrobat Reader DC' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:WaitImageAppear.Target>
+            </ui:WaitImageAppear>
+          </ui:AnchorBase.AnchorProvider>
+        </ui:AnchorBase>
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[courseName]" TopMost="True" />
+      </Sequence>
+    </FlowStep>
+    <sads:DebugSymbol.Symbol>dzpDOlxVc2Vyc1xyYW5yYW5cRG9jdW1lbnRzXFVpUGF0aC1BcHBsaWNhdGlvblxwZGZcTWFpbi54YW1sDj0DmAEPAgEBQAlQFAIBAkM6Q0YCAQNFC04fAgEJTwtPlgECAQRFmgFFpQECARFFR0VVAgEQRY8BRZQBAgEPSxFLlwICAQpPiAFPkwECAQdPRE9QAgEFS5ECS5QCAgEOS9IBS9sBAgEMS/QBS/kBAgEL</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="GoogleOCR_4" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="ReadPDFWithOCR_3" sap:VirtualizedContainerService.HintSize="314,132" />
       <sap2010:ViewStateData Id="WriteTextFile_3" sap:VirtualizedContainerService.HintSize="314,87" />
-      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="200,51">
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="336,383">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -134,9 +172,9 @@
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="GetValue_1" sap:VirtualizedContainerService.HintSize="314,106" />
       <sap2010:ViewStateData Id="WaitUiElementAppear_5" sap:VirtualizedContainerService.HintSize="314,106" />
-      <sap2010:ViewStateData Id="AnchorBase_1" sap:VirtualizedContainerService.HintSize="706,198" />
-      <sap2010:ViewStateData Id="MessageBox_2" sap:VirtualizedContainerService.HintSize="706,59" />
-      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="728,421">
+      <sap2010:ViewStateData Id="AnchorBase_1" sap:VirtualizedContainerService.HintSize="344,392" />
+      <sap2010:ViewStateData Id="MessageBox_2" sap:VirtualizedContainerService.HintSize="344,59" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -146,7 +184,26 @@
       <sap2010:ViewStateData Id="FlowStep_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">270,204.5</av:Point>
+            <av:Point x:Key="ShapeLocation">10,194.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetValue_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="WaitImageAppear_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="AnchorBase_2" sap:VirtualizedContainerService.HintSize="706,198" />
+      <sap2010:ViewStateData Id="MessageBox_3" sap:VirtualizedContainerService.HintSize="706,59" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">310,184.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -157,7 +214,7 @@
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 240,107.5 240,230 270,230</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,149.52 210,149.52</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
