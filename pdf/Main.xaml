@@ -155,7 +155,7 @@
       <sap2010:ViewStateData Id="GoogleOCR_4" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="ReadPDFWithOCR_3" sap:VirtualizedContainerService.HintSize="314,132" />
       <sap2010:ViewStateData Id="WriteTextFile_3" sap:VirtualizedContainerService.HintSize="314,87" />
-      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="336,383">
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
