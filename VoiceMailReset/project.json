@@ -1,0 +1,14 @@
+{
+  "name": "VoiceMailReset",
+  "description": "Blank Project",
+  "main": "Main.xaml",
+  "dependencies": {},
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.1.4.0",
+  "projectVersion": "1.0.6736.22721",
+  "packOptions": {},
+  "runtimeOptions": {}
+}
