@@ -1,0 +1,14 @@
+{
+  "name": "email_exercise",
+  "description": "Blank Project",
+  "main": "Main.xaml",
+  "dependencies": {},
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.1.4.0",
+  "projectVersion": "1.0.6740.18594",
+  "packOptions": {},
+  "runtimeOptions": {}
+}
